@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <h1>Hello World</h1>
+        <p>
+            This is <em>django-casper</em> test page.
+        </p>
+        <p>
+            <a href="#" id="add-text">Click here for a good time</a>
+        </p>
+        <div id="messages">
+        </div>
+    <script type="text/javascript">
+        document.getElementById("add-text").onclick = function() {
+            var p = document.createElement('p');
+            p.appendChild(document.createTextNode("Good times!"));
+
+            document.getElementById('messages').appendChild(p);
+            return false;
+        }
+    </script>
+    </body>
+</html>
