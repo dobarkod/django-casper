@@ -1,0 +1,4 @@
+*.pyc
+/testproject/.coverage
+/testproject/htmlcov
+/build/
