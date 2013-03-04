@@ -1,6 +1,6 @@
 # Django Casper test integration
 
-[![Build Status](https://secure.travis-ci.org/dobarkod/django-casper.png?branch=master)](http://travis-ci.org/dobarkod/django-casper)
+[![Build Status](https://travis-ci.org/dobarkod/django-casper.png?branch=master)](https://travis-ci.org/dobarkod/django-casper)
 
 A Django application that makes it easy to use CasperJS/PhantomJS for
 automated live testing of JavaScript and front/back integration for your
