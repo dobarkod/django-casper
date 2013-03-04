@@ -1,0 +1,2 @@
+include casper/*.py
+include casper/jslib/*.js
