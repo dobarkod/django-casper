@@ -1,6 +1,36 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Command
+import os
+
+
+class BaseCommand(Command):
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+
+class TestCommand(BaseCommand):
+
+    description = "run self-tests"
+
+    def run(self):
+        os.chdir('testproject')
+        os.system('python manage.py test testapp')
+
+
+class CoverageCommand(BaseCommand):
+    description = "run self-tests and report coverage (requires coverage.py)"
+
+    def run(self):
+        os.chdir('testproject')
+        os.system('coverage run --source=casper manage.py test testapp')
+        os.system('coverage html')
+
 
 setup(
     name='django-casper',
@@ -20,5 +50,9 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     packages=find_packages(),
-    install_requires=[]
+    install_requires=[],
+    cmdclass={
+        'test': TestCommand,
+        'coverage': CoverageCommand
+    }
 )
