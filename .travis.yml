@@ -1,7 +1,8 @@
 language: python
 python:
   - 2.7
-before_script:
-  - "npm install -g casperjs"
+before_install:
+  - "git clone git://github.com/n1k0/casperjs.git"
+  - "sudo ln -s casperjs/bin/casperjs /usr/local/bin"
 install: pip install Django --use-mirrors
 script: make test
