@@ -93,6 +93,7 @@ page (relative URL `/`), and clicking it sends you to the login page
                 "After clicking Login, we're redirected to login page");
         }
     );
+    helper.run();
 
 For more examples, have a look at the django-casper test suite, the source
 for the `djangocasper.js` helper and
