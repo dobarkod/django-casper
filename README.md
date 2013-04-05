@@ -41,7 +41,13 @@ installation details for your system.
 Other than that, Django Casper has no additional requirements (it's useless
 without a Django project, though).
 
-Download and installation procedure:
+Install via PyPI:
+
+    pip install django-casper
+
+## Installing from source
+
+To install directly from GitHub source:
 
     # Download from GitHub
     git clone git@github.com:dobarkod/django-casper.git
