@@ -8,6 +8,11 @@
         <p>
             This is <em>django-casper</em> test page.
         </p>
+        {% if authenticated %}
+        <p class="authorized">
+            Hi there!
+        </p>
+        {% endif %}
         <p>
             <a href="#" id="add-text">Click here for a good time</a>
         </p>

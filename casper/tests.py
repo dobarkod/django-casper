@@ -6,6 +6,7 @@ import sys
 from django.contrib.staticfiles.handlers import StaticFilesHandler
 from django.contrib.staticfiles.views import serve
 from django.utils.http import http_date
+from django.conf import settings
 
 __all__ = ['CasperTestCase']
 
@@ -47,6 +48,11 @@ class CasperTestCase(LiveServerTestCase):
             'ignore-ssl-errors': 'yes',
             'url-base': self.live_server_url
         })
+
+        cn = settings.SESSION_COOKIE_NAME
+        if cn in self.client.cookies:
+            kwargs['cookie-' + cn] = self.client.cookies[cn].value
+
         cmd = ['casperjs', 'test', '--no-colors']
         cmd.extend([('--%s=%s' % i) for i in kwargs.iteritems()])
         cmd.append(test_filename)

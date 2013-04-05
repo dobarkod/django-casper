@@ -1,12 +1,37 @@
 module.exports = (function() {
     var first_scenario = true;
 
+    function opt(name, dfl) {
+        if (casper.cli.options.hasOwnProperty(name))
+            return casper.cli.options[name];
+        else
+            return dfl;
+    }
+
+    function inject_cookies() {
+        var m = opt('url-base').match(/https?:\/\/([^:]+)(:\d+)?\//);
+        var domain = m ? m[1] : 'localhost';
+
+        for (var key in casper.cli.options) {
+            if (key.indexOf('cookie-') === 0) {
+                var cn = key.substring('cookie-'.length);
+                var c = phantom.addCookie({
+                    name: cn,
+                    value: opt(key),
+                    domain: domain
+                });
+            }
+        }
+    }
+
     function scenario() {
-        var base_url = casper.cli.options['url-base'];
+        var base_url = opt('url-base');
         var start_url = base_url + arguments[0];
         var i;
 
         if (first_scenario) {
+            inject_cookies();
+
             casper.options.timeout = 60000;
             casper.options.onTimeout = function() {
                 casper.die("Timed out after 60 seconds.", 1);
