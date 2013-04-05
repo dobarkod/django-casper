@@ -11,6 +11,7 @@ __all__ = ['CasperTestCase']
 
 
 def staticfiles_handler_serve(self, request):
+    import time
     resp = serve(request, self.file_path(request.path), insecure=True)
     if resp.status_code == 200:
         resp["Expires"] = http_date(time.time() + 24 * 3600)
