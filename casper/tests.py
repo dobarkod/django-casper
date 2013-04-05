@@ -52,7 +52,7 @@ class CasperTestCase(LiveServerTestCase):
         cmd.append(test_filename)
 
         p = Popen(cmd, stdout=PIPE, stderr=PIPE,
-            cwd=os.path.dirname(test_filename))
+            cwd=os.path.dirname(test_filename))  # flake8: noqa
         out, err = p.communicate()
         if p.returncode != 0:
             sys.stdout.write(out)

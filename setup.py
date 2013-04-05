@@ -4,6 +4,7 @@ from setuptools import setup, find_packages, Command
 import os
 import sys
 
+
 class BaseCommand(Command):
     user_options = []
 
@@ -23,6 +24,7 @@ class TestCommand(BaseCommand):
         ret = os.system('python manage.py test testapp')
         if ret != 0:
             sys.exit(-1)
+
 
 class CoverageCommand(BaseCommand):
     description = "run self-tests and report coverage (requires coverage.py)"

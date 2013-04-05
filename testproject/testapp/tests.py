@@ -10,8 +10,10 @@ class CasperTestTestCase(CasperTestCase):
 
     def test_that_casper_integration_works(self):
         self.assertTrue(self.casper(
-            os.path.join(os.path.dirname(__file__), 'casper-tests/test.js')))
+            os.path.join(os.path.dirname(__file__),
+                'casper-tests/test.js')))  # flake8: noqa
 
     def test_that_casper_integration_works_when_test_fails(self):
         self.assertFalse(self.casper(
-            os.path.join(os.path.dirname(__file__), 'casper-tests/failing-test.js')))
+            os.path.join(os.path.dirname(__file__),
+                'casper-tests/failing-test.js')))  # flake8: noqa
