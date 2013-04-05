@@ -126,6 +126,18 @@ Then access these keyword arguments from the JS file:
         }
     );
 
+## Bypassing log-in procedure
+
+When testing parts of the website for which the client needs to be logged in,
+each test scriptcase would need to go through the login procedure first. As
+this can be quite slow, it's possible to bypass it by logging in the
+Django's test client (`self.client` in the test cases). This will cause the
+session cookie to be injected into Phantom, so it will behave as an
+authenticated client.
+
+To use this, just use `self.client.login()` as you would normally. See the
+`session.js` test in Django Casper self-tests.
+
 ## Caveats
 
 Phantom/Casper testing is *very slow* compared to Django's
