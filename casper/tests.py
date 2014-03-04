@@ -23,6 +23,7 @@ class CasperTestCase(LiveServerTestCase):
     """LiveServerTestCase subclass that can invoke CasperJS tests."""
 
     use_phantom_disk_cache = False
+    no_colors = True
 
     def __init__(self, *args, **kwargs):
         super(CasperTestCase, self).__init__(*args, **kwargs)
@@ -46,14 +47,22 @@ class CasperTestCase(LiveServerTestCase):
             'load-images': 'no',
             'disk-cache': 'yes' if self.use_phantom_disk_cache else 'no',
             'ignore-ssl-errors': 'yes',
-            'url-base': self.live_server_url
+            'url-base': self.live_server_url,
+            'log-level': 'debug' if settings.DEBUG else 'error',
         })
 
         cn = settings.SESSION_COOKIE_NAME
         if cn in self.client.cookies:
             kwargs['cookie-' + cn] = self.client.cookies[cn].value
 
-        cmd = ['casperjs', 'test', '--no-colors']
+        cmd = ['casperjs', 'test']
+
+        if self.no_colors:
+            cmd.append('--no-colors')
+
+        if settings.DEBUG:
+            cmd.append('--verbose')
+
         cmd.extend([('--%s=%s' % i) for i in kwargs.iteritems()])
         cmd.append(test_filename)
 
