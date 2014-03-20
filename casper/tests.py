@@ -23,6 +23,7 @@ class CasperTestCase(LiveServerTestCase):
     """LiveServerTestCase subclass that can invoke CasperJS tests."""
 
     use_phantom_disk_cache = False
+    load_images = False
     no_colors = True
 
     def __init__(self, *args, **kwargs):
@@ -44,7 +45,7 @@ class CasperTestCase(LiveServerTestCase):
         """
 
         kwargs.update({
-            'load-images': 'no',
+            'load-images': 'yes' if self.load_images else 'no',
             'disk-cache': 'yes' if self.use_phantom_disk_cache else 'no',
             'ignore-ssl-errors': 'yes',
             'url-base': self.live_server_url,
