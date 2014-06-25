@@ -1,6 +1,6 @@
 from django.test import LiveServerTestCase
 from subprocess import Popen, PIPE
-import os.path
+import os
 import sys
 
 from django.contrib.staticfiles.handlers import StaticFilesHandler
@@ -67,7 +67,11 @@ class CasperTestCase(LiveServerTestCase):
         cmd.extend([('--%s=%s' % i) for i in kwargs.iteritems()])
         cmd.append(test_filename)
 
-        p = Popen(cmd, stdout=PIPE, stderr=PIPE,
+        node_env = os.environ.copy()
+        node_env['PATH'] = \
+                os.path.join(os.getcwd(), 'node_modules/.bin') + \
+                ":" + node_env['PATH']
+        p = Popen(cmd, env=node_env, stdout=PIPE, stderr=PIPE,
             cwd=os.path.dirname(test_filename))  # flake8: noqa
         out, err = p.communicate()
         if p.returncode != 0:
