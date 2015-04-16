@@ -29,6 +29,8 @@ module.exports = (function() {
         var start_url = base_url + arguments[0];
         var i;
 
+        casper.options.viewportSize = { width: 1024, height: 768 };
+
         if (first_scenario) {
             inject_cookies();
 
