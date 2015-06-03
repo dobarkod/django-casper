@@ -69,8 +69,8 @@ class CasperTestCase(LiveServerTestCase):
 
         node_env = os.environ.copy()
         node_env['PATH'] = \
-                os.path.join(os.getcwd(), 'node_modules/.bin') + \
-                ":" + node_env['PATH']
+            os.path.join(os.getcwd(), 'node_modules/.bin') + \
+            ":" + node_env['PATH']
         p = Popen(cmd, env=node_env, stdout=PIPE, stderr=PIPE,
             cwd=os.path.dirname(test_filename))  # flake8: noqa
         out, err = p.communicate()
