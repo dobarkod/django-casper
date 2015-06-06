@@ -55,7 +55,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     packages=find_packages(),
-    install_requires=[],
+    install_requires=['Django>=1.6'],
     cmdclass={
         'test': TestCommand,
         'coverage': CoverageCommand
