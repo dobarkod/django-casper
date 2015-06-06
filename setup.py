@@ -44,7 +44,7 @@ setup(
     author_email='senko.rasic@goodcode.io',
     description='CasperJS test integration for Django',
     license='MIT',
-    url='http://goodcode.io/',
+    url='https://github.com/dobarkod/django-casper',
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
