@@ -39,7 +39,7 @@ class CoverageCommand(BaseCommand):
 
 setup(
     name='django-casper',
-    version='0.0.2',
+    version='0.0.3',
     author='Senko Rasic',
     author_email='senko.rasic@goodcode.io',
     description='CasperJS test integration for Django',
