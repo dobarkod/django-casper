@@ -103,7 +103,7 @@ page (relative URL `/`), and clicking it sends you to the login page
 
 For more examples, have a look at the django-casper test suite, the source
 for the `djangocasper.js` helper and
-[CasperJS Tester API](http://casperjs.org/api.html#tester).
+[CasperJS Tester API](http://docs.casperjs.org/en/latest/modules/index.html).
 
 ## Passing extra arguments
 
