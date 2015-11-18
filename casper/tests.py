@@ -64,14 +64,14 @@ class CasperTestCase(LiveServerTestCase):
         if settings.DEBUG:
             cmd.append('--verbose')
 
-        cmd.extend([('--%s=%s' % i) for i in kwargs.iteritems()])
+        cmd.extend([('--%s=%s' % i) for i in kwargs.items()])
         cmd.append(test_filename)
 
         node_env = os.environ.copy()
         node_env['PATH'] = \
             os.path.join(os.getcwd(), 'node_modules/.bin') + \
             ":" + node_env['PATH']
-        p = Popen(cmd, env=node_env, stdout=PIPE, stderr=PIPE,
+        p = Popen(cmd, env=node_env, stdout=PIPE, stderr=PIPE, universal_newlines=True,
             cwd=os.path.dirname(test_filename))  # flake8: noqa
         out, err = p.communicate()
         if p.returncode != 0:
