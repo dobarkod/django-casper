@@ -1,4 +1,5 @@
 language: python
+sudo: false
 env:
   - DJANGO="Django>=1.6.0,<1.7.0"
   - DJANGO="Django>=1.7.0,<1.8.0"
