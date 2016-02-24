@@ -1,5 +1,5 @@
 language: python
-sudo: true
+sudo: false
 python:
   - 2.7
   - 3.4
@@ -16,6 +16,7 @@ matrix:
       env: DJANGO="Django>=1.8.0,<1.9.0"
 before_install:
   - "git clone --branch 1.1-beta5 git://github.com/n1k0/casperjs.git"
-  - "sudo ln -s `pwd`/casperjs/bin/casperjs /usr/local/bin"
+  - "mkdir -p node_modules/.bin"
+  - "ln -s `pwd`/casperjs/bin/casperjs node_modules/.bin"
 install: pip install $DJANGO
 script: make test
