@@ -15,7 +15,7 @@ def staticfiles_handler_serve(self, request):
     import time
     resp = serve(request, self.file_path(request.path), insecure=True)
     if resp.status_code == 200:
-        resp["Expires"] = http_date(time.time() + 24 * 3600)
+        resp['Expires'] = http_date(time.time() + 24 * 3600)
     return resp
 
 
@@ -70,7 +70,7 @@ class CasperTestCase(LiveServerTestCase):
         node_env = os.environ.copy()
         node_env['PATH'] = \
             os.path.join(os.getcwd(), 'node_modules/.bin') + \
-            ":" + node_env['PATH']
+            ':' + node_env['PATH']
         p = Popen(cmd, env=node_env, stdout=PIPE, stderr=PIPE, universal_newlines=True,
             cwd=os.path.dirname(test_filename))  # flake8: noqa
         out, err = p.communicate()
