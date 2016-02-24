@@ -1,3 +1,5 @@
+/* global casper: true, phantom: true */
+
 module.exports = (function() {
     var first_scenario = true;
 
