@@ -16,7 +16,7 @@ matrix:
       env: DJANGO="Django>=1.8.0,<1.9.0"
 before_install:
   - "git clone --branch 1.1-beta5 git://github.com/n1k0/casperjs.git"
-  - "mkdir -p node_modules/.bin"
-  - "ln -s `pwd`/casperjs/bin/casperjs node_modules/.bin"
+  - "mkdir -p testproject/node_modules/.bin"
+  - "ln -s `pwd`/casperjs/bin/casperjs testproject/node_modules/.bin"
 install: pip install $DJANGO
 script: make test
