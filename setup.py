@@ -58,7 +58,7 @@ setup(
     ],
     packages=find_packages(),
     install_requires=['Django>=1.7'],
-    test_requires=['coverage'],
+    setup_requires=['coverage'],
     cmdclass={
         'test': TestCommand,
         'coverage': CoverageCommand
