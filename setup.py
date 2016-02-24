@@ -42,6 +42,8 @@ setup(
     version='0.0.4',
     author='Senko Rasic',
     author_email='senko.rasic@goodcode.io',
+    maintainer='Nik Nyby',
+    maintainer_email='nikolas@gnu.org',
     description='CasperJS test integration for Django',
     license='MIT',
     url='https://github.com/dobarkod/django-casper',
